@@ -1,0 +1,20 @@
+html,
+body,
+header,
+#intro {
+    height: 100%;
+}
+
+#intro {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.top-nav-collapse {
+    background-color: #24355C;
+}
+.card-title {
+    margin-bottom: .75rem;
+}
