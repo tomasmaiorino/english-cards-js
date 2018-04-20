@@ -51,7 +51,7 @@ class Contents extends Component {
             imgUrl: null
           }
         ]
-  
+
     }
   */
   componentDidMount() {
