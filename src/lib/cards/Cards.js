@@ -52,7 +52,7 @@ class Cards extends React.Component {
     return (
       <section id="cards" className="text-center">
         <h2 className="mb-5 font-weight-bold">Vocabulary Cards</h2>
-        {!this.state.cardTypes && <Load />}
+        {this.state.cardTypes.length === 0 && <Load />}
         <div className="row">
           {cardContents}
         </div>

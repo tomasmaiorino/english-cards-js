@@ -31,9 +31,9 @@ class CardType extends React.Component {
     }
     const card = this.props.type.cards[this.state.currentPosition];
     return (
-      <div className="card" key={Math.random} >
+      <div className="card" key={Math.random()} >
         <Card
-          key={Math.random}
+          key={Math.random()}
           previous={this.previous}
           next={this.next}
           card={card}

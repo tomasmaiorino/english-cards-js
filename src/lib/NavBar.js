@@ -46,7 +46,7 @@ class NavBar extends Component {
         </div>
         </nav>
       <div id="intro" style={{
-            background: "url('../../img/nav.jpg')no-repeat center center fixed"
+            background: "url('/assets/img/nav.jpg')no-repeat center center fixed"
           }} className="view hm-black-strong">
          <div className="container-fluid full-bg-img d-flex align-items-center justify-content-center">
           <div className="row d-flex justify-content-center">
