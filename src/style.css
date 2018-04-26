@@ -6,13 +6,12 @@ header,
 }
 
 #intro {
-    background: url("../assets/img/nav.jpg")no-repeat center center fixed !important;
+    background: url('~/assets/img/nav.jpg')no-repeat center center fixed !important;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
-
 .top-nav-collapse {
     background-color: #24355C;
 }

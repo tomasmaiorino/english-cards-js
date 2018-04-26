@@ -5,7 +5,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -18,14 +19,14 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader?url=false']
       },
       {
-       test: /\.(jpe?g|png|gif|svg)$/i,
-       use: [
-         'url-loader?limit=10000',
-         'img-loader'
-       ]
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+            'file?hash=sha512&digest=hex&name=[hash].[ext]',
+            'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
       }
     ]
   },

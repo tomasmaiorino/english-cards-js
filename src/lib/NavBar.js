@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 
 import './NavBar.css';
 
-class NavBar extends Component {
+const pStyle = {
+  
+};
 
-  render() {
+const NavBar = () => {
     return (
       <div>
         <header>
@@ -45,7 +47,9 @@ class NavBar extends Component {
          </div>
         </div>
         </nav>
-      <div id="intro" className="view hm-black-strong">
+      <div id="intro" 
+         style={pStyle}
+      className="view hm-black-strong">
          <div className="container-fluid full-bg-img d-flex align-items-center justify-content-center">
           <div className="row d-flex justify-content-center">
            <div className="col-md-10 text-center">
@@ -60,6 +64,5 @@ class NavBar extends Component {
         </header>
         </div>
       );
-    }
   }
   export default NavBar;

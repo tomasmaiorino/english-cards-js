@@ -33,7 +33,7 @@ class CardType extends React.Component {
     return (
       <div className="card" key={Math.random()} >
         <Card
-          key={Math.random()}
+          key={card.name}
           previous={this.previous}
           next={this.next}
           card={card}
