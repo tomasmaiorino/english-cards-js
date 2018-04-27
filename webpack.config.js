@@ -7,7 +7,11 @@ module.exports = (env, argv) => {
   console.log('environment ' + mode);
   const config = {
     mode: mode,
-    entry: './src/index.js',
+    entry: {
+      index: './src/index.js',
+      mdb: './assets/js/mdb.min.js',
+      popper: './assets/js/popper.min.js'
+    },
     output: {
       path: path.join(__dirname, '/dist'),
       filename: 'index_bundle.js',
@@ -32,7 +36,7 @@ module.exports = (env, argv) => {
             loader: 'file-loader',
             options: {
               name(file) {
-                if (env === 'development') {
+                if (mode === 'production') {
                   return 'hash=sha512&digest=hex&name=[hash].[ext]'
                 }
                 return '[hash].[ext]'

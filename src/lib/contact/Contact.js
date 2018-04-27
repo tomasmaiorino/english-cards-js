@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-// const CARD_URL = "http://localhost:8080/api/v1/content-types?q=grammar";
-// const CARD_URL_PROD = "https://fathomless-tundra-22713.herokuapp.com/api/v1/content-types?q=grammar";
-
 class Contact extends Component {
 
   constructor(props) {
@@ -34,11 +31,11 @@ class Contact extends Component {
   }
 
   render() {
-    // const {email, name, message} = this.state;
+     const {email, name, message, subject} = this.state;
     // const isEmailValid = email === null || email.length > 10 && email.indexOf('@') !== -1;
     // const isNameValid = name === null || name.length > 9 && /[a-zA-Z]+? [a-zA-Z]/.test(name);
     // const isMessageValid = message === null || message.length > 10;
-
+    const enable = true;
     return (
 
       <section id="contact">
@@ -48,20 +45,18 @@ class Contact extends Component {
             <form className="p-5" id="contactForm">
               <div className="md-form form-sm">
                 <i className="fa fa-user prefix grey-text"></i>
-                <input type="text" name="name" className="form-control" id="senderName" />
+                <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange} className="form-control" id="senderName" />
                 <label htmlFor="senderName">Your name *</label>
               </div>
               <div className="has-warning md-form form-sm">
                 <i className="fa fa-envelope prefix grey-text"></i>
-                <input type="text" name="email" className="form-control" id="senderEmail" />
+                <input type="text" name="email" value={this.state.email} onChange={this.handleInputChange} className="form-control" id="senderEmail" />
                 <label htmlFor="senderEmail">Your email *</label>
-                <small className="form-text text-muted red-text">
-                  invalid email</small>
               </div>
               <div className="has-error md-form form-sm">
                 <i className="fa fa-tag prefix grey-text"></i>
                 <input type="text" name="subject"
-                  className="form-control" id="subject" data-validation-required-message="Please enter a subject." />
+                  className="form-control" value={this.state.subject} onChange={this.handleInputChange} id="subject" data-validation-required-message="Please enter a subject." />
                 <label htmlFor="subject">Subject *</label>
                 <small className="form-text text-muted red-text"></small>
               </div>
@@ -71,11 +66,12 @@ class Contact extends Component {
                   style={{
                     height: 100
                   }}
-                  id="message" data-validation-required-message="Please enter a message."></textarea>
+                  id="message" data-validation-required-message="Please enter a message." value={this.state.message} onChange={this.handleInputChange}>
+                </textarea>
                 <label htmlFor="message">Your message *</label>
               </div>
               <div className="text-center">
-                <button className="btn btn-unique">Send <i className="fa fa-paper-plane-o ml-1"></i></button>
+                <button className="btn btn-unique" disable={!enable}>Send <i className="fa fa-paper-plane-o ml-1"></i></button>
               </div>
             </form>
           </div>
