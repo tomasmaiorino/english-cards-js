@@ -50,7 +50,7 @@ module.exports = (env, argv) => {
           template: './assets/index.html'
         }),
         new CopyWebpackPlugin([
-          { from: '/assets/img/*', to: '/dist/assets/img/', context: '/' }
+          { from: 'assets', to: 'assets/',toType:'dir', ignore: [ '*.html' ]}
         ], { debug: 'debug' })] : [new HtmlWebpackPlugin({
           template: './assets/index.html'
         })],
