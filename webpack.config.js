@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = (env, argv) => {
   const mode = argv.mode;
@@ -26,9 +27,23 @@ module.exports = (env, argv) => {
             loader: 'babel-loader'
           },
         },
+        mode != 'production' ? 
         {
           test: /\.css$/,
           use: ['style-loader', 'css-loader?url=false']
+        } :
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract(
+            'style-loader',
+            combineLoaders([{
+              loader: 'css-loader',
+              query: {
+                modules: true,
+                localIdentName: '[name]__[local]___[hash:base64:5]'
+              }
+            }])
+          )
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/i,
@@ -54,15 +69,17 @@ module.exports = (env, argv) => {
           template: './assets/index.html'
         }),
         new CopyWebpackPlugin([
-          { from: 'assets', to: 'assets/',toType:'dir', ignore: [ '*.html' ]}
-        ], { debug: 'debug' })] : [new HtmlWebpackPlugin({
+          { from: 'assets', to: 'assets/',toType:'dir', ignore: [ '*.html', '.js', '.css' ]}
+        ], { debug: 'debug' }),
+      new ExtractTextPlugin('styles.css')] : [new HtmlWebpackPlugin({
           template: './assets/index.html'
         })],
     devServer: {
       inline: true,
       port: 3000,
       host: "0.0.0.0"
-    }
+    },
+    
   }
   console.log("plugins length " + config.plugins.length);
   return config;
