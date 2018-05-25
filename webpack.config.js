@@ -14,7 +14,7 @@ module.exports = (env, argv) => {
     },
     output: {
       path: path.join(__dirname, '/dist'),
-      filename: 'index_bundle.js',
+      filename: '[name].js',
       publicPath: '/'
     },
     module: {

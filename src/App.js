@@ -5,6 +5,7 @@ import Contents from './lib/contents/Contents';
 import Cards from './lib/cards/Cards';
 import Contact from './lib/contact/Contact';
 import Features from './lib/Features';
+import Definition from './lib/definition/Definition';
 
 import './App.css';
 
@@ -20,6 +21,8 @@ class App extends Component {
             <Features />
             <hr className="my-5" />
             <Cards />
+            <hr className="my-5"/>
+            <Definition />
             <hr className="my-5" />
             <Contents />
             <hr className="my-5" />

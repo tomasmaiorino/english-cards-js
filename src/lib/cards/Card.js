@@ -22,7 +22,6 @@ const Card = props => {
           </h4>
         )}
         {props.currentPosition > 0 && <CountDown name={props.card.name} />}
-
         <div className="flex-row">
           {props.currentPosition > 0 && (
             <button
