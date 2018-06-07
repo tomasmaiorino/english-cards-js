@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
   const mode = argv.mode;
@@ -34,16 +35,11 @@ module.exports = (env, argv) => {
         } :
         {
           test: /\.css$/,
-          loader: ExtractTextPlugin.extract(
-            'style-loader',
-            combineLoaders([{
-              loader: 'css-loader',
-              query: {
-                modules: true,
-                localIdentName: '[name]__[local]___[hash:base64:5]'
-              }
-            }])
-          )
+          use: ExtractTextPlugin.extract(
+            {
+              fallback: 'style-loader',
+              use: ['css-loader']
+            })
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/i,
@@ -65,6 +61,7 @@ module.exports = (env, argv) => {
     },
     plugins:
       mode === 'production' ? [
+        new CleanWebpackPlugin('dist', {} ),
         new HtmlWebpackPlugin({
           template: './assets/index.html'
         }),
