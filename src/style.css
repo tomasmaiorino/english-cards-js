@@ -6,7 +6,7 @@ header,
 }
 
 #intro {
-    background: url('~/assets/img/nav.jpg')no-repeat center center fixed !important;
+    background: url('/assets/img/nav.jpg')no-repeat center center fixed !important;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -17,4 +17,8 @@ header,
 }
 .card-title {
     margin-bottom: .75rem;
+}
+
+.pointer {
+    cursor: pointer;
 }

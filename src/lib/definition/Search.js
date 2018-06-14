@@ -92,42 +92,42 @@ class Search extends React.Component {
         return result.json();
       })
       .then(
-        data => {
-          switch (resStatus) {
-            case 200:
-              if (searchCheck(data)) {
-                this.addSearchResult(
-                  {
-                    type: searchType,
-                    content: Object.values(searchCheck(data))
-                  },
-                  searchingParam,
-                  false
-                );
-              }
-              break;
-            case 400:
-              //console.log("deu ruim :( " + data.message);
-              this.setState({
-                showResultLoad: false,
-                [searchingParam]: false,
-                errorMessage: data.message,
-                syn: false,
-                mean: false,
-                usage: false
-              });
-              console.log("test " + this.state.syn);
-              break;
-            default:
-          }
-        },
-        error => {
-          this.setState({
-            showResultLoad: false,
-            [searchingParam]: false
-          });
-          console.log(error);
+      data => {
+        switch (resStatus) {
+          case 200:
+            if (searchCheck(data)) {
+              this.addSearchResult(
+                {
+                  type: searchType,
+                  content: Object.values(searchCheck(data))
+                },
+                searchingParam,
+                false
+              );
+            }
+            break;
+          case 400:
+            //console.log("deu ruim :( " + data.message);
+            this.setState({
+              showResultLoad: false,
+              [searchingParam]: false,
+              errorMessage: data.message,
+              syn: false,
+              mean: false,
+              usage: false
+            });
+            // console.log("test " + this.state.syn);
+            break;
+          default:
         }
+      },
+      error => {
+        this.setState({
+          showResultLoad: false,
+          [searchingParam]: false
+        });
+        console.log(error);
+      }
       );
   }
 
@@ -186,41 +186,42 @@ class Search extends React.Component {
               <input type="text" id="materialFormContactNameEx"
                 value={this.state.word}
                 onChange={this.handleWordInput}
-                className="form-control" />
+                className="form-control"
+                id="searchWord" />
               <label htmlFor="materialFormContactNameEx">Your word</label>
             </div>
             <div className="form-group">
               <div className="form-check">
-                <input className="form-check-input"
+                <input className="form-check-input pointer"
                   name="syn"
                   value={this.state.syn}
                   onChange={this.handleCheck}
                   type="checkbox" id="checkSyn" />
-                <label className="form-check-label" forhtml="checkSyn">
+                <label className="form-check-label pointer" forhtml="checkSyn">
                   Synonyms
               </label>
               </div>
             </div>
             <div className="form-group">
               <div className="form-check">
-                <input className="form-check-input"
+                <input className="form-check-input pointer" 
                   name="mean"
                   value={this.state.mean}
                   onChange={this.handleCheck}
                   type="checkbox" id="checkMean" />
-                <label className="form-check-label" forhtml="checkMean">
+                <label className="form-check-label pointer" forhtml="checkMean">
                   Definition
               </label>
               </div>
             </div>
             <div className="form-group">
               <div className="form-check">
-                <input className="form-check-input"
+                <input className="form-check-input pointer"
                   name="usage"
                   value={this.state.usage}
                   onChange={this.handleCheck}
                   type="checkbox" id="checkUsage" />
-                <label className="form-check-label" forhtml="checkUsage">
+                <label className="form-check-label pointer" forhtml="checkUsage">
                   Sentences
               </label>
               </div>

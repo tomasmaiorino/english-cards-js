@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDom from "react-dom";
 
 class CountDown extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class CountDown extends React.Component {
       timer: 0
     };
     this.countDown = this.countDown.bind(this);
+    this.cardNameAction = this.cardNameAction.bind(this);
   }
 
   countDown() {
@@ -30,6 +32,11 @@ class CountDown extends React.Component {
     });
   }
 
+  cardNameAction() {
+    document.getElementById('searchWord').focus();
+    document.getElementById('searchWord').value = this.props.name;
+  }
+
   render() {
     return (
       <div>
@@ -39,7 +46,8 @@ class CountDown extends React.Component {
           </p>
         )}
         {this.state.counter === 0 && (
-          <p className="card-text">{this.props.name}</p>
+          <p className="card-text" style={{ cursor: 'pointer' }}
+            onClick={this.cardNameAction}>{this.props.name} <i className="fa fa-search"></i></p>
         )}
       </div>
     );
