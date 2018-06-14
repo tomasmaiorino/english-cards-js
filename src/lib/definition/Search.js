@@ -187,7 +187,7 @@ class Search extends React.Component {
                 value={this.state.word}
                 onChange={this.handleWordInput}
                 className="form-control" />
-              <label for="materialFormContactNameEx">Your word</label>
+              <label htmlFor="materialFormContactNameEx">Your word</label>
             </div>
             <div className="form-group">
               <div className="form-check">
