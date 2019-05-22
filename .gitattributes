@@ -1,2 +1,2 @@
 *.js linguist-language=Javascript
-assets/* linguist-vendored
+assets/* linguist-vendored=false
